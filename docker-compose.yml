@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql:9.0
+    container_name: coffee_db
+    environment:
+      MYSQL_DATABASE: coffee_base
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d:ro
