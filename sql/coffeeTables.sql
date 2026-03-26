@@ -190,11 +190,17 @@ VALUES
 
 
 
--- @BLOCK
-INSERT INTO user (email, password_hash)
-VALUES ('wrong_email_format', 'hashed_pass_123');
+-- הוספת מנהל מערכת (ADMIN)
+INSERT INTO user (email, password_hash, role, is_military_reserve) 
+VALUES ('admin@coffee.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.7uqqQOa', 'ADMIN', FALSE);
 
+-- הוספת לקוח רגיל שהוא גם במילואים
+INSERT INTO user (email, password_hash, role, is_military_reserve) 
+VALUES ('reserve_hero@gmail.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.7uqqQOa', 'CUSTOMER', TRUE);
 
+-- הוספת לקוח רגיל נוסף
+INSERT INTO user (email, password_hash, role, total_orders) 
+VALUES ('regular_joe@yahoo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.7uqqQOa', 'CUSTOMER', 5);
 
 
 

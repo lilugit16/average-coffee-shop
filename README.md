@@ -1,58 +1,36 @@
-# ☕ Average Coffee Shop - Fullstack System
+# ☕ Average Coffee Shop - Smart Management System
 
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.x-brightgreen)
-![Java](https://img.shields.io/badge/Java-21-orange)
-![MySQL](https://img.shields.io/badge/MySQL-9.0-blue)
-![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
+A robust, secure Backend system for a modern coffee shop, built with **Spring Boot 3** and **MySQL**. 
+This project was developed as part of the **Wix KickstartX 2026** challenge.
 
-מערכת ניהול מקצה לקצה לבית קפה מודרני, המדגימה יכולות **Fullstack** תוך שימוש בארכיטקטורה מתקדמת וסטנדרטים של התעשייה. הפרויקט פותח כחלק מהגשת מועמדות לתוכנית **Wix KickstartX**.
+## 🚀 Key Features
+- **Secure Authentication:** User registration and login using **BCrypt** password hashing (no plain-text passwords).
+- **Role-Based Access:** Distinction between `CUSTOMER` and `ADMIN` roles.
+- **Military Reserve Benefit:** Built-in logic to identify military reserve members (`isMilitaryReserve`) for automatic discounts.
+- **RESTful API:** Clean and documented endpoints for user management and profiles.
+- **Data Integrity:** Implementation of **JPA/Hibernate** with **MySQL** for persistent and structured data.
 
----
+## 🛠️ Tech Stack
+- **Backend:** Java 17+, Spring Boot 3.x
+- **Security:** Spring Security (Stateless, CSRF disabled for API)
+- **Database:** MySQL 8.0
+- **Build Tool:** Maven/Gradle
 
-## 🚀 טכנולוגיות וכלים (Tech Stack)
+## 📂 Architecture & Best Practices
+- **Layered Architecture:** Clear separation between Controllers, Services, Repositories, and Models.
+- **Clean Code:** Use of **Java Optional** to prevent `NullPointerException`.
+- **Dependency Injection:** Following SOLID principles for better testability.
+- **Security-by-Design:** Sanitizing API responses to avoid leaking sensitive data (like password hashes).
 
-* **Backend:** Java 21 & **Spring Boot 3**
-* **Database:** MySQL 9.0 הרץ בתוך **Docker Container**
-* **ORM:** Spring Data JPA / Hibernate
-* **API:** RESTful Services (JSON)
-* **Infrastructure:** Maven & Docker Desktop
+## 🔌 API Endpoints (Current)
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|--------|
+| POST | `/api/users/register` | Register a new user | Public |
+| POST | `/api/users/login` | Login and get user status | Public |
+| GET | `/api/users/{id}` | Fetch user profile data | Public |
 
----
-
-## 🏗️ ארכיטקטורה (Project Structure)
-
-הפרויקט בנוי לפי תבנית **MVC** (Model-View-Controller) להפרדה מלאה בין שכבת הנתונים לשכבת הלוגיקה:
-
-* **`controller/`** - ניהול בקשות HTTP (Endpoints) וחשיפת ה-API לעולם.
-* **`model/`** - הגדרת הישויות (Entities) ומיפוי הטבלאות לבסיס הנתונים.
-* **`repository/`** - ממשקי גישה לנתונים המשתמשים ב-JPA לביצוע שאילתות.
-
----
-
-## ✅ מה בוצע עד כה?
-
-- [x] **Infrastracture:** הקמת תשתית Docker למסד נתונים MySQL.
-- [x] **Spring Integration:** חיבור מלא בין האפליקציה למסד הנתונים.
-- [x] **REST API:** פיתוח נקודות קצה לשליפה ומחיקה של פולי קפה (`CoffeeBean`).
-- [x] **Schema Design:** תכנון מסד נתונים הכולל טבלאות מלאי, הזמנות, משתמשים ומערכת מדבקות (Gamification).
-- [x] **Clean Code:** חלוקה ל-Packages ושמירה על קוד קריא ופשוט לתחזוקה.
-
----
-
-## 🛠️ איך להריץ את הפרויקט?
-
-1.  **בסיס הנתונים:** וודא ש-Docker Desktop רץ והפעל את הקונטיינר של MySQL.
-2.  **הגדרות:** וודא שפרטי הגישה מעודכנים ב-`src/main/resources/application.properties`.
-3.  **הרצה:** הפעל את `AverageCoffeeShopApplication.java` מה-IDE שלך (VS Code / IntelliJ).
-4.  **בדיקה:** גלוש לכתובת:
-    `http://localhost:8080/api/beans`
-
----
-
-## 📂 מבנה התיקיות (Packages)
-```text
-src/main/java/com/coffeeshop/average_coffee_shop/
-├── controller/  # API Endpoints
-├── model/       # JPA Entities
-├── repository/  # Data Access Layer
-└── AverageCoffeeShopApplication.java
+## 🏗️ How to Run
+1. Clone the repository.
+2. Configure your MySQL credentials in `src/main/resources/application.properties`.
+3. Run `mvn spring-boot:run`.
+4. Use PowerShell or Postman to interact with the API.
